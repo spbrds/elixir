@@ -1,0 +1,46 @@
+##0
+
+defmodule ListOperations do
+
+def sum([]), do: 0
+def sum([head | tail]), do: head + sum(tail)
+
+
+##1
+##&(&1 * &1)
+def mapsum(list,fun), do: auxmapsum(list, 0, fun)
+
+defp auxmapsum([], value, _), do: value
+defp auxmapsum([head | tail ], value, function), do: auxmapsum(tail, value + function.(head), function)
+
+
+##2
+def max([]), do: IO.puts "Empty list"
+def max([head | tail]), do: auxmax(tail, head)
+
+defp auxmax([], max), do: max
+defp auxmax([head | tail], max) when max >= head do auxmax(tail, max) end
+defp auxmax([head | tail], max) when max < head do auxmax(tail, head) end
+
+#### with a function to get max
+def maxWithHelper(list), do: auxmaxwithhelper(list)
+
+def auxmaxwithhelper([max]), do: max
+def auxmaxwithhelper([head|tail]), do: Kernel.max(head, auxmaxwithhelper(tail))
+
+
+
+##3
+def caeser([] , _n), do: []
+def caeser([ head | tail ], n), do: [wrapit(head + n)] ++ caeser(tail, n) 
+##could also work with a | because it would put the left as head, and the rest as tail. ex -> [a | [b | [c | d] ]
+
+defp wrapit(c) when c <= ?z do c end
+defp wrapit(c), do: c - 26
+
+##### 4 ####
+
+def span(from, to) when from > to do [] end
+def span(from, to), do: [from | span(from + 1, to)]
+
+end
