@@ -6,7 +6,7 @@ defmodule Issues.CLI do
 @moduledoc """
 Handle the command line by parsing the arguments and call
 the correspondent function
-""
+"""
 
 	def run(args), do: parse_args(args)
 		
@@ -19,7 +19,7 @@ the correspondent function
 		
 			{[help: true], _ , _} -> :help
 			{[author: true], _ ,_} -> @author
-			{_, {user,[user, project, count], _} -> {user, project, count}
+			{_, [user, project, count], _} -> {user, project, count}
 			{_, [user, project], _} -> {user, project, @default_count}
 			_ -> :help
 		
