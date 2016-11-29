@@ -12,7 +12,7 @@ the correspondent function
 		
 
 	def parse_args(args) do
-		parse = OptionParser.parse(args, switches: [help: :boolean, author],
+		parse = OptionParser.parse(args, switches: [help: :boolean, author: :boolean],
 										 aliases: [h: :help, a: :author])
 										 
 		case parse do
