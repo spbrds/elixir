@@ -48,4 +48,40 @@ class Persist {
       
       return accumulator;
   }
+  
+}
+
+
+class Persist {
+    public static int persistence(long n) {
+        boolean isOne = false;
+        //first validation
+        if (n < 10) {
+            return 0;
+        }
+
+        //iterating
+        int iterations = 0;
+        long number = n;
+        while (!isOne) {
+            iterations++;
+            number = getMultiplication(number);
+            isOne = (number < 10);
+        }
+
+        return iterations;
+    }
+
+    public static long getMultiplication(long number) {
+        long firstPart = number / 10;
+        long lastNumber = number % 10;
+        long accumulator = lastNumber;
+
+        while(firstPart > 9){
+            lastNumber = firstPart % 10;
+            firstPart = firstPart / 10;
+            accumulator *= lastNumber;
+        }
+        return accumulator * firstPart;
+    }
 }
