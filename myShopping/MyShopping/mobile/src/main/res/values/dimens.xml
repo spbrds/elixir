@@ -1,0 +1,76 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+
+    <!--
+         Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html
+    -->
+    <dimen name="navigation_drawer_width">320dp</dimen>
+    <dimen name="recycler_view_header">12sp</dimen>
+    <dimen name="navigation_drawer_font_size">14sp</dimen>
+    <dimen name="navigation_drawer_icon_size">25dp</dimen>
+
+    <!-- Generic Lists -->
+    <dimen name="screen_edge_left_and_right_margins"> 16dp </dimen>
+    <dimen name="content_associated_with_an_icon_or_avatar_left_margin"> 72dp</dimen>
+    <dimen name="horizontal_margins_on_mobile"> 16dp</dimen>
+
+    <!-- Lists -->
+    <dimen name="lists_subtitle"> 56dp</dimen>
+    <dimen name="lists_list_item"> 72dp</dimen>
+    <dimen name ="image_list"> 40dp</dimen>
+    <dimen name ="lists_space_between_content_areas"> 8dp</dimen>
+
+    <!-- Mixed content -->
+    <dimen name="mixed_content_list_items"> 56dp</dimen>
+    <dimen name="mixed_content_subtitles_and_list"> 48dp</dimen>
+    <dimen name="mixed_content_space_between_content_areas"> 8dp</dimen>
+
+    <!-- Cards -->
+    <dimen name="title_padding_top">24dp</dimen>
+    <dimen name="content_padding">16dp</dimen>
+    <dimen name="title_lateral_padding">16dp</dimen>
+    <dimen name="space_between_cards">8dp</dimen>
+
+    <!--LISTS -->
+    <dimen name="list_lateral_padding">16dp</dimen>
+
+    <!-- groups Icons-->
+    <dimen name="group_flag_image">30dp</dimen>
+    <dimen name="group_flag_image_draw">20dp</dimen>
+
+
+    <dimen name="padding_around_content_area">24dp</dimen>
+    <dimen name="padding_between_title_and_body_text">20dp</dimen>
+    <dimen name="dialog_title_text">20sp</dimen>
+    <dimen name="dialog_body_text">14sp</dimen>
+
+    <!-- SLIDING TAB LAYOUT text size, converted do SP later, on class -->
+    <dimen name="tabLayoutTextViewSize">12sp</dimen>
+
+    <!-- Texts dimen-->
+    <dimen name="textSize_title">20sp</dimen>
+    <dimen name="textSize_caption">12sp</dimen>
+    <dimen name="textSize_subHead">16sp</dimen>
+    <dimen name="textSize_Large">22sp</dimen>
+    <dimen name="textSize_Small">14sp</dimen>
+    <dimen name="textSize_small">11sp</dimen>
+    <dimen name="textSize_Body1">14sp</dimen>
+    <dimen name="textSize_Headline">24sp</dimen>
+
+
+    <!-- events -->
+    <dimen name="event_height">60dp</dimen>
+    <dimen name="event_timeline_width">2dp</dimen>
+    <dimen name="event_icon_size">20dp</dimen>
+    <dimen name="event_standard_margin">5dp</dimen>
+    <dimen name="event_player_photo_size">30dp</dimen>
+
+    <!--buttons-->
+    <dimen name="buttonRightMargin">8dp</dimen>
+
+</resources>
