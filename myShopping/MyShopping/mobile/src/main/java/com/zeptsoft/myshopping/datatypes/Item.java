@@ -6,6 +6,7 @@ package com.zeptsoft.myshopping.datatypes;
 
 public class Item {
 
+
     private String name;
     private String category;
     private String observations;

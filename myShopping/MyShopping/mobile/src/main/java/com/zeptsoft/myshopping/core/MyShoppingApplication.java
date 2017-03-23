@@ -1,9 +1,9 @@
 package com.zeptsoft.myshopping.core;
 
 import android.app.Application;
-import android.app.NotificationManager;
 
 import com.zeptsoft.myshopping.core.listplayer.IListNavigator;
+import com.zeptsoft.myshopping.core.listplayer.SimpleListNavigator;
 import com.zeptsoft.myshopping.notification.NotificationHelper;
 
 /**
@@ -22,12 +22,11 @@ public class MyShoppingApplication extends Application {
         super.onTerminate();
     }
 
-
     public IListNavigator getNavigator() {
+        if(navigator == null){
+            navigator = new SimpleListNavigator();
+        }
         return navigator;
     }
 
-    public void setNavigator(IListNavigator navigator) {
-        this.navigator = navigator;
-    }
 }

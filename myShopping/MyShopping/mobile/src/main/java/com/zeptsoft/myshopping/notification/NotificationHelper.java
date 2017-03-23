@@ -9,6 +9,10 @@ import android.support.v7.app.NotificationCompat;
 import android.widget.RemoteViews;
 
 import com.zeptsoft.myshopping.R;
+import com.zeptsoft.myshopping.core.MyShoppingApplication;
+import com.zeptsoft.myshopping.core.listplayer.IListNavigator;
+import com.zeptsoft.myshopping.core.listplayer.SimpleListNavigator;
+import com.zeptsoft.myshopping.datatypes.Item;
 import com.zeptsoft.myshopping.receivers.NotificationBroadcastReceiver;
 
 /**
@@ -35,10 +39,13 @@ public class NotificationHelper {
 
 
     public void buildNotification(Context context) {
-        //mudar o builder e o Manager para statics numa classe
-        //para poder fazer o update da notificação
+        MyShoppingApplication app = (MyShoppingApplication)context.getApplicationContext();
+        Item firstItem = app.getNavigator().getFirst();
 
+        //setting view and texts
         notificationView = new RemoteViews(context.getPackageName(), R.layout.notification_layout);
+        this.setNotificationTexts(firstItem.getName(),firstItem.getCategory());
+
         builder = new NotificationCompat.Builder(context);
 
         Notification notification = builder
@@ -62,13 +69,17 @@ public class NotificationHelper {
     }
 
     public void updateNotification(Context context, String mainText, String subText){
-        this.notificationView.setTextViewText(R.id.main_text, mainText);
-        this.notificationView.setTextViewText(R.id.sub_text, subText);
+        this.setNotificationTexts(mainText,subText);
 
         builder.setDefaults(0)
                 .setContent(this.notificationView);
         this.showNotification(context,builder.build());
 
+    }
+
+    public void setNotificationTexts(String mainText, String subText){
+        this.notificationView.setTextViewText(R.id.main_text, mainText);
+        this.notificationView.setTextViewText(R.id.sub_text, subText);
     }
 
 

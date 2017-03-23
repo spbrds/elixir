@@ -51,10 +51,9 @@ class Persist {
   
 }
 
-
+//SUBMETIDA
 class Persist {
     public static int persistence(long n) {
-        boolean isOne = false;
         //first validation
         if (n < 10) {
             return 0;
@@ -63,19 +62,17 @@ class Persist {
         //iterating
         int iterations = 0;
         long number = n;
-        while (!isOne) {
+        while (number > 9) {
             iterations++;
             number = getMultiplication(number);
-            isOne = (number < 10);
         }
 
         return iterations;
     }
 
     public static long getMultiplication(long number) {
-        long firstPart = number / 10;
-        long lastNumber = number % 10;
-        long accumulator = lastNumber;
+        long firstPart = number, lastNumber = 0;
+        long accumulator = 1;
 
         while(firstPart > 9){
             lastNumber = firstPart % 10;
@@ -85,3 +82,26 @@ class Persist {
         return accumulator * firstPart;
     }
 }
+
+//APÓS VER OS PATRÕES
+class Presist{
+	public static int persistence(long n) {
+		if(n < 10){
+			return 0;
+		}
+		long res = getMultiplication(n);
+		
+		if ( res > 9){
+			return 1 + presistance(n);			
+		}
+	
+	}
+	
+	public static long getMultiplication(long number){
+		Stream<Char> charStream = Arrays.stream((""+n).toCharArray());
+		return charStream.reduce(1,(a,b) -> a * b);
+	
+	}
+
+}
+

@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 
+import com.zeptsoft.myshopping.core.MyShoppingApplication;
+import com.zeptsoft.myshopping.core.listplayer.IListNavigator;
+import com.zeptsoft.myshopping.datatypes.Item;
 import com.zeptsoft.myshopping.log.LogUtils;
 import com.zeptsoft.myshopping.notification.NotificationHelper;
 
@@ -20,21 +23,31 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        Item item = null;
+        IListNavigator navigator = ((MyShoppingApplication)context.getApplicationContext()).getNavigator();
+
 
         String action = intent.getStringExtra("action");
         switch (action){
             case NAVIGATION_PREVIOUS:
-                NotificationHelper.getInstance().updateNotification(context,"Bolachas","Snacks");
-                return;
+                item = navigator.previous();
+                break;
             case NAVIGATION_DONE:
-                NotificationHelper.getInstance().updateNotification(context,"Café","Bebidas");
-                return;
+                navigator.check();
+                item = navigator.next();
+                break;
             case NAVIGATION_NEXT:
-                NotificationHelper.getInstance().updateNotification(context,"Pão","Padaria");
-                return;
+                item = navigator.next();
+                break;
             default:
                 LogUtils.d(String.format("Unrecognized action %s",action));
                 return;
         }
+        if(item != null) {
+            NotificationHelper.getInstance().updateNotification(context, item.getName(), item.getCategory());
+        }else{
+            NotificationHelper.getInstance().updateNotification(context, "Lista concluída", "");
+        }
     }
+
 }
