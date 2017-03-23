@@ -38,13 +38,15 @@ public class SimpleListNavigator implements IListNavigator {
         if(indexes.isEmpty()){
             return null;
         }
-
         currentIndex = this.hasPrevious() ? currentIndex - 1 : items.size()-1;
         return items.get(indexes.get(currentIndex));
     }
 
     @Override
     public void check() {
+        if(indexes.isEmpty()){
+            return;
+        }
         this.manager.checkItem(items.get(indexes.get(currentIndex)).getName());
         this.indexes.remove(currentIndex);
 
