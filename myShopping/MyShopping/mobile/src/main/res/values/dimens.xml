@@ -3,6 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_half_margin">8dp</dimen>
 
 
     <!--
@@ -72,5 +73,8 @@
 
     <!--buttons-->
     <dimen name="buttonRightMargin">8dp</dimen>
+    <dimen name="fabSize">56dp</dimen>
+    <dimen name="fabSizeMini">40dp</dimen>
+
 
 </resources>

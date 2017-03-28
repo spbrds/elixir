@@ -23,9 +23,12 @@
 
     <include layout="@layout/content_main" />
 
+    <include layout="@layout/list_actions"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:orientation="vertical"
         android:layout_gravity="bottom|end">
 

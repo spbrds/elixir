@@ -8,6 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.zeptsoft.myshopping.core.MyShoppingApplication;
 import com.zeptsoft.myshopping.core.listmanager.IListManager;
@@ -16,6 +20,12 @@ import com.zeptsoft.myshopping.notification.NotificationHelper;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Animation upAnimation;
+    private Animation downAnimation;
+    private boolean opened = false;
+
+    LinearLayout subActionView;
+
     IListManager listManager;
 
     @Override
@@ -23,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        subActionView = (LinearLayout)findViewById(R.id.sub_action_container);
 
         //initiating listManager
         listManager = new MockListManager();
@@ -70,6 +81,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.list_add).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateLayout();
+            }
+        });
+
         //registering notificationButton
         findViewById(R.id.fabNot).setOnClickListener(
                 new View.OnClickListener(){
@@ -100,6 +118,61 @@ public class MainActivity extends AppCompatActivity {
         //para poder fazer o update da notificação
         NotificationHelper.getInstance().buildNotification(this);
 
+    }
+
+    public void animateLayout(){
+        initAnimations();
+
+        if(opened){
+            subActionView.startAnimation(upAnimation);
+        }else{
+           subActionView.startAnimation(downAnimation);
+        }
+        opened = !opened;
+
+    }
+
+    //initing animation and setting listeners
+    public void initAnimations(){
+        if(upAnimation == null){
+            upAnimation = AnimationUtils.loadAnimation(this, R.anim.list_sub_action_animator_up);
+            upAnimation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    subActionView.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+        }
+
+        if(downAnimation == null){
+            downAnimation = AnimationUtils.loadAnimation(this, R.anim.list_sub_action_animator_down);
+            upAnimation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    subActionView.setVisibility(View.INVISIBLE);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+        }
     }
 
 }
