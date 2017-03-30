@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/lists_list_item"
+    android:paddingLeft="@dimen/list_lateral_padding"
+    android:paddingRight="@dimen/list_lateral_padding">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <CheckBox
+            android:id="@+id/item_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"/>
+
+        <LinearLayout
+            android:id="@+id/item_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/space_between_cards"
+            android:layout_toRightOf="@id/item_checkbox"
+            android:layout_toLeftOf="@id/item_check_image">
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="@dimen/textSize_subHead"
+                android:text="Nome"/>
+
+            <TextView
+                android:id="@+id/item_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSize_caption"
+                android:text="Categoria"/>
+
+            <TextView
+                android:id="@+id/item_observations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSize_caption"
+                android:text="Observations"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/item_check_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/cast_ic_mini_controller_mute"/>
+
+    </>
+
+</LinearLayout>

@@ -8,7 +8,7 @@ import java.util.List;
  * Created by SSBook on 09/03/17.
  */
 
-public class ListManager implements IListManager{
+public class ListManager implements IListManager, IListSubject{
 
     protected String listId;
     protected List<Item> items;
@@ -62,4 +62,18 @@ public class ListManager implements IListManager{
 
     }
 
+    @Override
+    public void register(IListObserver observer) {
+
+    }
+
+    @Override
+    public void notifyObservers() {
+
+    }
+
+    @Override
+    public void unregister(IListObserver observer) {
+
+    }
 }

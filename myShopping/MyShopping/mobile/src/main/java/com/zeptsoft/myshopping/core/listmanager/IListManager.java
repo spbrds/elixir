@@ -9,15 +9,15 @@ import java.util.List;
  */
 
 public interface IListManager {
-    public List<Item> getList();
-    public void addItem(Item item);
-    public void deleteItem(String itemId);
-    public void editItem(String itemId, Item item);
-    public Item getItem(String itemId);
-    public void checkItem(String itemId);
-    public void deleteList();
+    List<Item> getList();
+    void addItem(Item item);
+    void deleteItem(String itemId);
+    void editItem(String itemId, Item item);
+    Item getItem(String itemId);
+    void checkItem(String itemId);
+    void deleteList();
 
-    public void commit();
-    public void rollback();
+    void commit();
+    void rollback();
 
 }
