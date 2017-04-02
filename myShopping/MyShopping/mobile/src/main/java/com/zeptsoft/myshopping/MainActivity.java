@@ -4,6 +4,8 @@ package com.zeptsoft.myshopping;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
@@ -13,6 +15,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
 import com.zeptsoft.myshopping.core.MyShoppingApplication;
+import com.zeptsoft.myshopping.core.adapters.ItemListAdapter;
 import com.zeptsoft.myshopping.core.listmanager.IListManager;
 import com.zeptsoft.myshopping.core.listmanager.MockListManager;
 import com.zeptsoft.myshopping.notification.NotificationHelper;
@@ -23,9 +26,11 @@ public class MainActivity extends AppCompatActivity {
     private Animation downAnimation;
     private boolean opened = false;
 
-    LinearLayout subActionView;
+    private LinearLayout subActionView;
+    private RecyclerView itemRecyclerView;
+    private ItemListAdapter adapter;
+    private IListManager listManager;
 
-    IListManager listManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +42,13 @@ public class MainActivity extends AppCompatActivity {
         //initiating listManager
         listManager = new MockListManager();
 
-        //mListView = (ListViewCompat)findViewById(R.id.productList);
+        itemRecyclerView = (RecyclerView)findViewById(R.id.productList);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //mAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,presentProducts);
-       // mListView.setAdapter(mAdapter);
+        adapter = new ItemListAdapter(this, listManager.getList());
+        itemRecyclerView.setAdapter(adapter);
+        itemRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //updateListView();
         registerButtonsListener();

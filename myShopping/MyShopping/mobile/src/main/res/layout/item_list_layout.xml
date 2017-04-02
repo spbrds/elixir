@@ -18,6 +18,14 @@
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"/>
 
+        <ImageView
+            android:id="@+id/item_check_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/cast_ic_mini_controller_mute"/>
+
         <LinearLayout
             android:id="@+id/item_info"
             android:layout_width="match_parent"
@@ -52,14 +60,6 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/item_check_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/cast_ic_mini_controller_mute"/>
-
-    </>
+    </RelativeLayout>
 
 </LinearLayout>

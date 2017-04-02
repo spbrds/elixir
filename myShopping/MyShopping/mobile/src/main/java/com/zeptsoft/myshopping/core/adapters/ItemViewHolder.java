@@ -14,7 +14,6 @@ import com.zeptsoft.myshopping.datatypes.Item;
 
 public class ItemViewHolder extends RecyclerView.ViewHolder {
 
-    private Item item;
     private TextView name;
     private TextView category;
     private TextView observations;
@@ -29,7 +28,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindItem(Item i){
-        item = i;
         name.setText(i.getName());
         category.setText(i.getCategory());
         observations.setText(i.getObservations());
