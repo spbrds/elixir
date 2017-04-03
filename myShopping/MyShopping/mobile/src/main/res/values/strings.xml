@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">My Shopping</string>
     <string name="action_settings">Settings</string>
+
+    <!-- add item labels-->
+    <string name="item_name_label">Name</string>
+    <string name="item_category_label">Category</string>
+    <string name="item_observations_label">Observations</string>
+
+    <string name="item_name_hint">Item name</string>
+    <string name="item_category_hint">ex: Vegetables</string>
+    <string name="item_observations_hint">Insert here extra notes</string>
+    <string name="item_urgent_hint">Urgent</string>
 </resources>

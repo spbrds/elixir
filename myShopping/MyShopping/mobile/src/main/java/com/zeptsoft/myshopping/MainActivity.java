@@ -20,6 +20,9 @@ import com.zeptsoft.myshopping.core.listmanager.IListManager;
 import com.zeptsoft.myshopping.core.listmanager.MockListManager;
 import com.zeptsoft.myshopping.notification.NotificationHelper;
 
+
+
+
 public class MainActivity extends AppCompatActivity {
 
     private Animation upAnimation;

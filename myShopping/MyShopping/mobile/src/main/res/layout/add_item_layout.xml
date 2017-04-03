@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/content_padding">
+
+    <!-- Name input -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/label_top_margin"
+        >
+
+        <TextView
+            android:text="@string/item_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/label_component_bottom_margin"/>
+
+        <EditText
+            android:id="@+id/new_item_name"
+            android:hint="@string/item_name_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/label_component_bottom_margin"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/LightGrey"
+            android:layout_marginBottom="@dimen/label_component_bottom_margin"
+        />
+
+    </LinearLayout>
+
+    <!-- Category input -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/label_top_margin"
+        >
+        <TextView
+            android:text="@string/item_category_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/label_component_bottom_margin"/>
+        <EditText
+            android:id="@+id/new_item_category"
+            android:hint="@string/item_category_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/label_component_bottom_margin"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/LightGrey"
+            android:layout_marginBottom="@dimen/label_component_bottom_margin"
+            />
+
+    </LinearLayout>
+
+    <!-- observations input -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/label_top_margin"
+        >
+
+        <EditText
+            android:id="@+id/new_item_observations"
+            android:hint="@string/item_observations_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/label_component_bottom_margin"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/LightGrey"
+            android:layout_marginBottom="@dimen/label_component_bottom_margin"
+            />
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/new_item_urgent_check"
+        android:hint="@string/item_urgent_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/label_top_margin"/>
+
+</LinearLayout>

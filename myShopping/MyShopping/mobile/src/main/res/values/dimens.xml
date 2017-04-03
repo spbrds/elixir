@@ -76,5 +76,11 @@
     <dimen name="fabSize">56dp</dimen>
     <dimen name="fabSizeMini">40dp</dimen>
 
+    <!--Add Item Input dimens-->
+
+    <dimen name="input_total_height">72dp</dimen>
+    <dimen name="label_top_margin">16dp</dimen>
+    <dimen name="label_component_bottom_margin">8dp</dimen>
+
 
 </resources>
