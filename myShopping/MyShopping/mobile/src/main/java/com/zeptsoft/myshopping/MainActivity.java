@@ -16,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.zeptsoft.myshopping.core.MyShoppingApplication;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayout addLayout;
 
-    private FloatingActionButton addButton;
+    private ImageButton addButton;
     private Button addItemButton;
 
     private EditText itemNameEdit;
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        subActionView = (LinearLayout)findViewById(R.id.sub_action_container);
+       // subActionView = (LinearLayout)findViewById(R.id.sub_action_container);
 
         //initiating listManager
         listManager = new ListManager("por aqui id");
@@ -129,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
-        addButton = (FloatingActionButton) findViewById(R.id.list_add);
+        addButton = (ImageButton) findViewById(R.id.list_add);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -222,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
             addReset = AnimationUtils.loadAnimation(this, R.anim.add_button_reset);
         }
 
-        if(upAnimation == null){
+        /*if(upAnimation == null){
             upAnimation = AnimationUtils.loadAnimation(this, R.anim.list_sub_action_animator_up);
             upAnimation.setAnimationListener(new Animation.AnimationListener() {
                 @Override
@@ -260,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-        }
+        }*/
     }
 
 }
