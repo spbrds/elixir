@@ -11,4 +11,5 @@
     <string name="item_category_hint">ex: Vegetables</string>
     <string name="item_observations_hint">Insert here extra notes</string>
     <string name="item_urgent_hint">Urgent</string>
+    <string name="item_add_button">Add</string>
 </resources>

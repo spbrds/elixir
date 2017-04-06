@@ -2,6 +2,7 @@ package com.zeptsoft.myshopping.core.listmanager;
 
 import com.zeptsoft.myshopping.datatypes.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
 public class ListManager implements IListManager, IListSubject{
 
     protected String listId;
-    protected List<Item> items;
+    protected List<Item> items = new ArrayList<>();
 
     public ListManager(String listId){
         this.listId = listId;
@@ -19,12 +20,12 @@ public class ListManager implements IListManager, IListSubject{
 
     @Override
     public List<Item> getList() {
-        return null;
+        return items;
     }
 
     @Override
     public void addItem(Item item) {
-
+        items.add(item);
     }
 
     @Override

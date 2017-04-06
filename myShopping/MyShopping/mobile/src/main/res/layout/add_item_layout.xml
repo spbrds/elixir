@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/add_layout"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/content_padding">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/WhiteSmoke"
+    android:padding="@dimen/content_padding"
+    android:visibility="gone">
 
     <!-- Name input -->
 
@@ -25,14 +29,10 @@
             android:hint="@string/item_name_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
+            android:imeOptions="actionNext"
             android:layout_marginBottom="@dimen/label_component_bottom_margin"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/LightGrey"
-            android:layout_marginBottom="@dimen/label_component_bottom_margin"
-        />
 
     </LinearLayout>
 
@@ -54,47 +54,41 @@
             android:hint="@string/item_category_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="text"
             android:layout_marginBottom="@dimen/label_component_bottom_margin"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/LightGrey"
-            android:layout_marginBottom="@dimen/label_component_bottom_margin"
-            />
 
     </LinearLayout>
 
     <!-- observations input -->
 
-    <LinearLayout
+
+    <EditText
+        android:id="@+id/new_item_observations"
+        android:hint="@string/item_observations_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="@dimen/label_top_margin"
-        >
+        android:inputType="text"
+        android:imeOptions="actionNext"
+        android:layout_marginBottom="@dimen/label_component_bottom_margin"/>
 
-        <EditText
-            android:id="@+id/new_item_observations"
-            android:hint="@string/item_observations_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/label_component_bottom_margin"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/LightGrey"
-            android:layout_marginBottom="@dimen/label_component_bottom_margin"
-            />
-
-    </LinearLayout>
 
     <CheckBox
         android:id="@+id/new_item_urgent_check"
         android:hint="@string/item_urgent_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
         android:layout_marginTop="@dimen/label_top_margin"/>
+
+    <Button
+        android:id="@+id/item_add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/item_add_button"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

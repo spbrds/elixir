@@ -12,7 +12,8 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +22,6 @@
         </activity>
 
         <receiver android:name=".receivers.NotificationBroadcastReceiver" android:exported="false"/>
-        <receiver android:name=".MainActivity$BroadC" android:exported="false"/>
     </application>
 
 
