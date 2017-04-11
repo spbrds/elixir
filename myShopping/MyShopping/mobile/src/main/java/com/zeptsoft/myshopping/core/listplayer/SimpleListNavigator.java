@@ -56,17 +56,20 @@ public class SimpleListNavigator implements IListNavigator {
     public void startNavigation(IListManager manager, String id) {
         this.listId = id;
         this.manager = manager;
-        this.items = manager.getList();
 
-        initIndexesArray();
+        resetNavigation();
     }
 
-    private void initIndexesArray(){
+    public void resetNavigation(){
+        this.items = manager.getList();
+
         this.indexes = new ArrayList<>();
         int listSize = items.size();
 
         for (int i = 0; i < listSize; i++){
-            indexes.add(i);
+            if(!items.get(i).isChecked()) {
+                indexes.add(i);
+            }
         }
     }
 

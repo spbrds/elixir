@@ -45,7 +45,19 @@ public class ListManager implements IListManager, IListSubject{
 
     @Override
     public void checkItem(String itemId) {
+        if(itemId == null){
+            return;
+        }
 
+        //checking the item
+        for(Item item : items){
+            if(itemId.equals(item.getName())){
+                item.setChecked(true);
+                break;
+            }
+        }
+
+        //update on DB
     }
 
     @Override

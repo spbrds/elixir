@@ -32,8 +32,6 @@ import com.zeptsoft.myshopping.notification.NotificationHelper;
 public class ItemListFragment extends Fragment{
 
     private static final String LIST_ID_EXTRA_ID = "com.myshopping.list_id";
-    private Animation upAnimation;
-    private Animation downAnimation;
     private Animation addRotation;
     private Animation addReset;
 
@@ -42,7 +40,6 @@ public class ItemListFragment extends Fragment{
     private LinearLayout addLayout;
     private ImageButton addButton;
 
-    private LinearLayout subActionView;
     private RecyclerView itemRecyclerView;
     private ItemListAdapter adapter;
     private IListManager listManager;
@@ -70,6 +67,14 @@ public class ItemListFragment extends Fragment{
         //initiating ListManager
         listManager = new ListManager("por aqui id");
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //refreshing the adapter for when activity returns
+        adapter.notifyDataSetChanged();
     }
 
     private void initLayout(View v){
