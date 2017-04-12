@@ -48,7 +48,7 @@ public class ListManager implements IListManager, IListSubject{
         if(itemId == null){
             return;
         }
-
+//maybe just do a update on the database and then wait for the callback to update the manager
         //checking the item
         for(Item item : items){
             if(itemId.equals(item.getName())){

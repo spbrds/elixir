@@ -53,8 +53,7 @@ public class ItemListFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View fragmentView = inflater.inflate(R.layout.item_list_layout, container);
-
+        View fragmentView = inflater.inflate(R.layout.list_fragment_layout, container,false);
         initLayout(fragmentView);
 
         return fragmentView;
@@ -63,9 +62,14 @@ public class ItemListFragment extends Fragment{
     @Override
     public void onStart() {
         super.onStart();
+        //initiating ListManager and list
+        if(listManager == null) {
+            listManager = new ListManager(this.getArguments().getString(LIST_ID_EXTRA_ID));
+            adapter = new ItemListAdapter(this.getActivity(), listManager.getList());
+            itemRecyclerView.setAdapter(adapter);
+            itemRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        }
 
-        //initiating ListManager
-        listManager = new ListManager("por aqui id");
 
     }
 
@@ -79,9 +83,6 @@ public class ItemListFragment extends Fragment{
 
     private void initLayout(View v){
         itemRecyclerView = (RecyclerView)v.findViewById(R.id.productList);
-        adapter = new ItemListAdapter(this.getActivity(), listManager.getList());
-        itemRecyclerView.setAdapter(adapter);
-        itemRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         addLayout = (LinearLayout) v.findViewById(R.id.add_layout);
 
         //updateListView();
@@ -90,15 +91,7 @@ public class ItemListFragment extends Fragment{
 
 
     private void registerButtonsListener(View v){
-    /*  //registering reload button
-      findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Snackbar.make(view, "List reseted", Snackbar.LENGTH_LONG)
-                      .setAction("Action", null).show();
-          }
-      });/
-    */
+
     //registering notificationButton
     v.findViewById(R.id.fabNot).setOnClickListener(
             new View.OnClickListener(){
