@@ -25,6 +25,9 @@ import com.zeptsoft.myshopping.core.listmanager.ListManager;
 import com.zeptsoft.myshopping.datatypes.Item;
 import com.zeptsoft.myshopping.notification.NotificationHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by SSBook on 10/04/17.
  */
@@ -32,6 +35,7 @@ import com.zeptsoft.myshopping.notification.NotificationHelper;
 public class ItemListFragment extends Fragment{
 
     private static final String LIST_ID_EXTRA_ID = "com.myshopping.list_id";
+
     private Animation addRotation;
     private Animation addReset;
 
@@ -69,8 +73,6 @@ public class ItemListFragment extends Fragment{
             itemRecyclerView.setAdapter(adapter);
             itemRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         }
-
-
     }
 
     @Override
@@ -92,42 +94,56 @@ public class ItemListFragment extends Fragment{
 
     private void registerButtonsListener(View v){
 
-    //registering notificationButton
-    v.findViewById(R.id.fabNot).setOnClickListener(
-            new View.OnClickListener(){
-        @Override
-        public void onClick(View view) {
-            Snackbar.make(view, "Notification Created", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
-            //initiating navigation
-            MyShoppingApplication app = (MyShoppingApplication)getActivity().getApplicationContext();
-            app.getNavigator().startNavigation(listManager,"");
+        v.findViewById(R.id.list_remove).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //listManager
+            }
+        });
 
-            //showing notification
-            buildNotification();
-        }
-    });
+        v.findViewById(R.id.list_check).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
 
-    addButton = (ImageButton) v.findViewById(R.id.list_add);
-    addButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            animateAddLayout();
+        //registering notificationButton
+        v.findViewById(R.id.fabNot).setOnClickListener(
+                new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Notification Created", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                //initiating navigation
+                MyShoppingApplication app = (MyShoppingApplication)getActivity().getApplicationContext();
+                app.getNavigator().startNavigation(listManager,"");
 
-        }
-    });
-
-    addItemButton = (Button) v.findViewById(R.id.item_add_button);
-    addItemButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            addItemToList();
-        }
-    });
+                //showing notification
+                buildNotification();
+            }
+        });
 
 
-}
+        addButton = (ImageButton) v.findViewById(R.id.list_add);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateAddLayout();
+
+            }
+        });
+
+        addItemButton = (Button) v.findViewById(R.id.item_add_button);
+        addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addItemToList();
+            }
+        });
+
+    }
+
 
     private void addItemToList(){
         bindFormFields();

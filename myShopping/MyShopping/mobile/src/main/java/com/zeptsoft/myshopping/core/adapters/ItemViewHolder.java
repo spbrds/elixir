@@ -2,6 +2,8 @@ package com.zeptsoft.myshopping.core.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,10 +16,12 @@ import com.zeptsoft.myshopping.datatypes.Item;
 
 public class ItemViewHolder extends RecyclerView.ViewHolder {
 
+    private Item item;
     private TextView name;
     private TextView category;
     private TextView observations;
     private ImageView checkedImage;
+    private CheckBox selectCheckBox;
 
     public ItemViewHolder(View itemView) {
         super(itemView);
@@ -25,13 +29,24 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
         category = (TextView)itemView.findViewById(R.id.item_category);
         observations = (TextView)itemView.findViewById(R.id.item_observations);
         checkedImage = (ImageView)itemView.findViewById(R.id.item_check_image);
+        selectCheckBox = (CheckBox)itemView.findViewById(R.id.item_checkbox);
     }
 
-    public void bindItem(Item i){
+    public void bindItem(final Item i){
+        this.item = i;
         name.setText(i.getName());
         category.setText(i.getCategory());
         observations.setText(i.getObservations());
         checkedImage.setVisibility(i.isChecked() ? View.VISIBLE : View.INVISIBLE);
+        selectCheckBox.setChecked(i.isSelected());
+
+        //binding the checkbox
+        selectCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                i.setChecked(isChecked);
+            }
+        });
 
     }
 

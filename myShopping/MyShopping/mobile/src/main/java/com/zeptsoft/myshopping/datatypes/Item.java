@@ -6,13 +6,13 @@ package com.zeptsoft.myshopping.datatypes;
 
 public class Item {
 
-
     private String name;
     private String category;
     private String observations;
     private boolean checked;
     private boolean urgent;
     private String createUserId;
+    private boolean selected;
 
 
     public String getName() {
@@ -61,5 +61,13 @@ public class Item {
 
     public void setCreateUserId(String createUserId) {
         this.createUserId = createUserId;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }

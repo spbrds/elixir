@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/cast_ic_mini_controller_mute"/>
+            android:src="@drawable/ic_done_black_24dp"/>
 
         <LinearLayout
             android:id="@+id/item_info"
