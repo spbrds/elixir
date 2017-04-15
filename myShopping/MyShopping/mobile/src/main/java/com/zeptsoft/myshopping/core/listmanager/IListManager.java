@@ -1,5 +1,6 @@
 package com.zeptsoft.myshopping.core.listmanager;
 
+import com.zeptsoft.myshopping.core.adapters.SelectableItem;
 import com.zeptsoft.myshopping.datatypes.Item;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  */
 
 public interface IListManager {
-    List<Item> getList();
+    List<SelectableItem> getList();
     void addItem(Item item);
     void deleteItem(String itemId);
     void editItem(String itemId, Item item);

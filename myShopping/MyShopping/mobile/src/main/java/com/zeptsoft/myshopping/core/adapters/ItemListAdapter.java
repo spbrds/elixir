@@ -19,9 +19,9 @@ import java.util.List;
 public class ItemListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
 
     private Context context;
-    private List<Item> items;
+    private List<SelectableItem> items;
 
-    public ItemListAdapter(Context context, List<Item> items){
+    public ItemListAdapter(Context context, List<SelectableItem> items){
         this.context = context;
         this.items = items;
     }

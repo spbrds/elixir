@@ -1,5 +1,6 @@
 package com.zeptsoft.myshopping.core.listmanager;
 
+import com.zeptsoft.myshopping.core.adapters.SelectableItem;
 import com.zeptsoft.myshopping.datatypes.Item;
 
 import java.util.ArrayList;
@@ -12,24 +13,35 @@ import java.util.List;
 public class ListManager implements IListManager, IListSubject{
 
     protected String listId;
-    protected List<Item> items = new ArrayList<>();
+    protected List<SelectableItem> items = new ArrayList<>();
 
     public ListManager(String listId){
         this.listId = listId;
     }
 
     @Override
-    public List<Item> getList() {
+    public List<SelectableItem> getList() {
         return items;
     }
 
     @Override
     public void addItem(Item item) {
-        items.add(item);
+        SelectableItem selectableItem = new SelectableItem();
+        selectableItem.setItem(item);
+        items.add(selectableItem);
     }
 
     @Override
     public void deleteItem(String itemId) {
+        if(itemId == null){
+            return;
+        }
+
+        SelectableItem item = findItem(itemId);
+
+        if (item != null) {
+            this.items.remove(item);
+        }
 
     }
 
@@ -40,7 +52,13 @@ public class ListManager implements IListManager, IListSubject{
 
     @Override
     public Item getItem(String itemId) {
-        return null;
+        if(itemId == null){
+            return null;
+        }
+
+        SelectableItem item = findItem(itemId);
+
+        return item != null? item.getItem() : null;
     }
 
     @Override
@@ -48,13 +66,12 @@ public class ListManager implements IListManager, IListSubject{
         if(itemId == null){
             return;
         }
-//maybe just do a update on the database and then wait for the callback to update the manager
+        //maybe just do a update on the database and then wait for the callback to update the manager
         //checking the item
-        for(Item item : items){
-            if(itemId.equals(item.getName())){
-                item.setChecked(true);
-                break;
-            }
+        SelectableItem item = findItem(itemId);
+
+        if(item != null) {
+            item.getItem().setChecked(true);
         }
 
         //update on DB
@@ -63,6 +80,30 @@ public class ListManager implements IListManager, IListSubject{
     @Override
     public void deleteList() {
 
+    }
+
+    @Override
+    public void checkSelectedItems() {
+        for(SelectableItem si : items){
+            if(si.isSelected()){
+                si.getItem().setChecked(true);
+            }
+        }
+    }
+
+    @Override
+    public void deleteSelectedItems() {
+        ArrayList<SelectableItem> deletedItems = new ArrayList<>();
+
+        for(SelectableItem si : items){
+            if(si.isSelected()){
+                deletedItems.add(si);
+            }
+        }
+
+        for(SelectableItem si : deletedItems){
+            this.items.remove(si);
+        }
     }
 
     @Override
@@ -88,5 +129,15 @@ public class ListManager implements IListManager, IListSubject{
     @Override
     public void unregister(IListObserver observer) {
 
+    }
+
+    private SelectableItem findItem(String itemId){
+        for(SelectableItem selectable : items){
+            if(itemId.equals(selectable.getItem().getName())){
+                return selectable;
+            }
+        }
+
+        return null;
     }
 }

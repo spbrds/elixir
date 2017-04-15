@@ -16,7 +16,7 @@ import com.zeptsoft.myshopping.datatypes.Item;
 
 public class ItemViewHolder extends RecyclerView.ViewHolder {
 
-    private Item item;
+    private SelectableItem selectableItem;
     private TextView name;
     private TextView category;
     private TextView observations;
@@ -32,19 +32,20 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
         selectCheckBox = (CheckBox)itemView.findViewById(R.id.item_checkbox);
     }
 
-    public void bindItem(final Item i){
-        this.item = i;
+    public void bindItem(SelectableItem si){
+        this.selectableItem = si;
+        Item i = si.getItem();
         name.setText(i.getName());
         category.setText(i.getCategory());
         observations.setText(i.getObservations());
         checkedImage.setVisibility(i.isChecked() ? View.VISIBLE : View.INVISIBLE);
-        selectCheckBox.setChecked(i.isSelected());
+        selectCheckBox.setChecked(si.isSelected());
 
         //binding the checkbox
         selectCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                i.setChecked(isChecked);
+                selectableItem.getItem().setChecked(isChecked);
             }
         });
 

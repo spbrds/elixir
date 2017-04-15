@@ -1,5 +1,6 @@
 package com.zeptsoft.myshopping.core.listplayer;
 
+import com.zeptsoft.myshopping.core.adapters.SelectableItem;
 import com.zeptsoft.myshopping.core.listmanager.IListManager;
 import com.zeptsoft.myshopping.datatypes.Item;
 
@@ -13,12 +14,12 @@ import java.util.List;
 public class SimpleListNavigator implements IListNavigator {
     private String listId;
     private IListManager manager;
-    private List<Item> items;
+    private List<SelectableItem> items;
     private List<Integer> indexes;
     private int currentIndex = 0;
 
     public Item getFirst(){
-        return items.isEmpty() ? null : items.get(0);
+        return items.isEmpty() ? null : items.get(0).getItem();
     }
 
     @Override
@@ -29,7 +30,7 @@ public class SimpleListNavigator implements IListNavigator {
         }
 
         currentIndex = this.hasNext() ? currentIndex + 1 : 0;
-        return items.get(indexes.get(currentIndex));
+        return items.get(indexes.get(currentIndex)).getItem();
     }
 
     @Override
@@ -39,7 +40,7 @@ public class SimpleListNavigator implements IListNavigator {
             return null;
         }
         currentIndex = this.hasPrevious() ? currentIndex - 1 : items.size()-1;
-        return items.get(indexes.get(currentIndex));
+        return items.get(indexes.get(currentIndex)).getItem();
     }
 
     @Override
@@ -47,7 +48,7 @@ public class SimpleListNavigator implements IListNavigator {
         if(indexes.isEmpty()){
             return;
         }
-        this.manager.checkItem(items.get(indexes.get(currentIndex)).getName());
+        this.manager.checkItem(items.get(indexes.get(currentIndex)).getItem().getName());
         this.indexes.remove(currentIndex);
 
     }
@@ -67,7 +68,7 @@ public class SimpleListNavigator implements IListNavigator {
         int listSize = items.size();
 
         for (int i = 0; i < listSize; i++){
-            if(!items.get(i).isChecked()) {
+            if(!items.get(i).getItem().isChecked()) {
                 indexes.add(i);
             }
         }

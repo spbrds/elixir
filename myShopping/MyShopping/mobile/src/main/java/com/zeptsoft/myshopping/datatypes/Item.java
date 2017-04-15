@@ -12,8 +12,6 @@ public class Item {
     private boolean checked;
     private boolean urgent;
     private String createUserId;
-    private boolean selected;
-
 
     public String getName() {
         return name;
@@ -63,11 +61,4 @@ public class Item {
         this.createUserId = createUserId;
     }
 
-    public boolean isSelected() {
-        return selected;
-    }
-
-    public void setSelected(boolean selected) {
-        this.selected = selected;
-    }
 }
