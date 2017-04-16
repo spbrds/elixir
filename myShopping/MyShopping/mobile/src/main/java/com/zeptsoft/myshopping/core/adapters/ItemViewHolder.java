@@ -45,7 +45,7 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
         selectCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                selectableItem.getItem().setChecked(isChecked);
+                selectableItem.setSelected(true);
             }
         });
 

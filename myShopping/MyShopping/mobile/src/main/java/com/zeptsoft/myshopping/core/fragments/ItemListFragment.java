@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import com.zeptsoft.myshopping.R;
 import com.zeptsoft.myshopping.core.MyShoppingApplication;
 import com.zeptsoft.myshopping.core.adapters.ItemListAdapter;
+import com.zeptsoft.myshopping.core.adapters.SelectableItem;
 import com.zeptsoft.myshopping.core.listmanager.IListManager;
 import com.zeptsoft.myshopping.core.listmanager.ListManager;
 import com.zeptsoft.myshopping.datatypes.Item;
@@ -97,14 +98,16 @@ public class ItemListFragment extends Fragment{
         v.findViewById(R.id.list_remove).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //listManager
+                listManager.deleteSelectedItems();
+                updateListView();
             }
         });
 
         v.findViewById(R.id.list_check).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                listManager.checkSelectedItems();
+                updateListView();
             }
         });
 
@@ -179,8 +182,15 @@ public class ItemListFragment extends Fragment{
     }
 
     private void updateListView(){
+        //clearing selection
+        this.clearSelection();
         adapter.notifyDataSetChanged();
+    }
 
+    private void clearSelection(){
+        for(SelectableItem i : listManager.getList()){
+            i.setSelected(false);
+        }
     }
 
     public void buildNotification(){

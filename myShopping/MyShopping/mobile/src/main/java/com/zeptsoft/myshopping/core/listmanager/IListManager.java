@@ -18,6 +18,7 @@ public interface IListManager {
     void checkItem(String itemId);
     void deleteList();
 
+
     void checkSelectedItems();
     void deleteSelectedItems();
 
