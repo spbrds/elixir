@@ -81,6 +81,8 @@
     <dimen name="input_total_height">72dp</dimen>
     <dimen name="label_top_margin">16dp</dimen>
     <dimen name="label_component_bottom_margin">8dp</dimen>
+    <dimen name="input_width">180dp</dimen>
+
 
 
 </resources>
