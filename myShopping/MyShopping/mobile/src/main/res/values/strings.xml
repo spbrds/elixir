@@ -14,10 +14,14 @@
     <string name="item_add_button">Add</string>
 
     <!-- Authentication fields-->
-    <string name="register_username_hint">Username</string>
+    <string name="register_username_hint">Email Address</string>
     <string name="register_password_hint">Password</string>
     <string name="register_conf_pwd_hint">Confirm Password</string>
     <string name="login_button">Login</string>
+    <string name="register_button">Register</string>
+
+    <string name="register_failed">Your register failed, try again later...</string>
+    <string name="login_successfull">Welcome %1$s</string>
 
 
 </resources>
