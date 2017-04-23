@@ -9,9 +9,15 @@ import android.os.Bundle;
  */
 
 public class ActivityUtils {
+    public static void chanveActivity(Context context, Class<?> targetActivity){
+        changeActivity(context, targetActivity, null);
+    }
+
     public static void changeActivity (Context context, Class<?> targetActivity, Bundle extras){
         Intent intent = new Intent(context, targetActivity);
-        intent.putExtras(extras);
+        if (extras != null) {
+            intent.putExtras(extras);
+        }
 
         context.startActivity(intent);
     }
