@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.vision.text.Text;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.zeptsoft.myshopping.R;
@@ -50,6 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     LogUtils.d(String.format("Task Result: %s", task.isSuccessful()));
                     if(!task.isSuccessful()) {
+                        ((TextView)findViewById(R.id.register_error_text)).setText(task.getException().getMessage());
                         LogUtils.d("Error Occurred: %s" +task.getException().getMessage());
                     }
                 }

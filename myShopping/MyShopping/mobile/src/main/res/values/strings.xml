@@ -21,6 +21,7 @@
     <string name="register_button">Register</string>
 
     <string name="register_failed">Your register failed, try again later...</string>
+    <string name="login_failed">Login failed</string>
     <string name="login_successfull">Welcome %1$s</string>
 
 

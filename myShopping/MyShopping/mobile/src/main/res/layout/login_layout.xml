@@ -5,17 +5,24 @@
     android:gravity="center_horizontal">
 
     <EditText
-        android:id="@+id/register_email"
+        android:id="@+id/login_email"
         android:layout_width="@dimen/input_width"
         android:layout_height="wrap_content"
         android:hint="@string/register_username_hint"/>
 
     <EditText
-        android:id="@+id/register_pwd"
+        android:id="@+id/login_pwd"
         android:layout_width="@dimen/input_width"
         android:layout_height="wrap_content"
         android:hint="@string/register_password_hint"
         android:inputType="textPassword"/>
+
+    <TextView
+        android:id="@+id/register_error_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Red"
+        android:textStyle="bold"/>
 
     <LinearLayout
             android:layout_height="wrap_content"

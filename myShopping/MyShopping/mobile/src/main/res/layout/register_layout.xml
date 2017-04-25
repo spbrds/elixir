@@ -23,6 +23,12 @@
         android:layout_height="wrap_content"
         android:hint="@string/register_conf_pwd_hint"
         android:inputType="textPassword"/>
+    <TextView
+        android:id="@+id/register_error_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Red"
+        android:textStyle="bold"/>
     <Button
         android:id="@+id/register_button"
         android:text="@string/register_button"
