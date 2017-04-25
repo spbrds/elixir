@@ -14,24 +14,19 @@ import com.google.android.gms.vision.text.Text;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.zeptsoft.myshopping.R;
+import com.zeptsoft.myshopping.core.activity.AuthenticationActivity;
 import com.zeptsoft.myshopping.log.LogUtils;
 import com.zeptsoft.myshopping.utils.AuthenticationUtils;
 
 import java.nio.channels.Channels;
 
-public class RegisterActivity extends AppCompatActivity {
-
-    private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener authListener;
+public class RegisterActivity extends AuthenticationActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.register_layout);
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        authListener = AuthenticationUtils.getAuthStateListenerForLogin(this, R.string.register_failed);
 
         findViewById(R.id.register_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,4 +57,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected int getErrorMessageId() {
+        return R.string.register_failed;
+    }
 }
