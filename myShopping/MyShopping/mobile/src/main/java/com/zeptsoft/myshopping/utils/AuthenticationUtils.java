@@ -6,8 +6,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.zeptsoft.myshopping.R;
 import com.zeptsoft.myshopping.activity.ListActivity;
+import com.zeptsoft.myshopping.log.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,17 +23,32 @@ public class AuthenticationUtils {
     private static final Class<?> activityAfterLogin = ListActivity.class;
     private static FirebaseUser authenticatedUser;
     private static final int PASSWORD_MIN_SIZE = 8;
+    private static volatile boolean authenticated = false;
+    static int counter;
 
     public static FirebaseAuth.AuthStateListener getAuthStateListenerForLogin(final Context context, final int failureMessageId){
         return new FirebaseAuth.AuthStateListener() {
+            private boolean initiated = false;
+
+
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                //already authenticated, no need to do anything else
+                //put in place because of AuthStateListener called multiple times after login
+                LogUtils.d("Passei aqui" + counter++);
+                if(authenticated){
+                    return;
+                }
                 authenticatedUser = firebaseAuth.getCurrentUser();
                 if(authenticatedUser != null){
+                    authenticated = true;
                     ActivityUtils.changeActivity(context, activityAfterLogin,null);
                 }else{
-                    Toast.makeText(context, context.getResources().getString(failureMessageId), Toast.LENGTH_SHORT).show();
+                    if(initiated) {
+                        Toast.makeText(context, context.getResources().getString(failureMessageId), Toast.LENGTH_SHORT).show();
+                    }
                 }
+                this.initiated=true;
             }
         };
     }

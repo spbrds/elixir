@@ -9,7 +9,7 @@ import android.os.Bundle;
  */
 
 public class ActivityUtils {
-    public static void chanveActivity(Context context, Class<?> targetActivity){
+    public static void changeActivity(Context context, Class<?> targetActivity){
         changeActivity(context, targetActivity, null);
     }
 

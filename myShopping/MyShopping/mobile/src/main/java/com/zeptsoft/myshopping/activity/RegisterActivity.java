@@ -1,24 +1,18 @@
 package com.zeptsoft.myshopping.activity;
 
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.vision.text.Text;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.zeptsoft.myshopping.R;
 import com.zeptsoft.myshopping.core.activity.AuthenticationActivity;
 import com.zeptsoft.myshopping.log.LogUtils;
-import com.zeptsoft.myshopping.utils.AuthenticationUtils;
 
-import java.nio.channels.Channels;
 
 public class RegisterActivity extends AuthenticationActivity {
 

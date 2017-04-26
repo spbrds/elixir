@@ -8,14 +8,16 @@
         android:id="@+id/login_email"
         android:layout_width="@dimen/input_width"
         android:layout_height="wrap_content"
-        android:hint="@string/register_username_hint"/>
+        android:hint="@string/register_username_hint"
+        android:text="test@mysho.com"/>
 
     <EditText
         android:id="@+id/login_pwd"
         android:layout_width="@dimen/input_width"
         android:layout_height="wrap_content"
         android:hint="@string/register_password_hint"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:text="Pwd123!"/>
 
     <TextView
         android:id="@+id/register_error_text"
