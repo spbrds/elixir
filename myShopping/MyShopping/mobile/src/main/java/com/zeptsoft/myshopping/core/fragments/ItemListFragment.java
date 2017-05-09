@@ -23,10 +23,13 @@ import com.zeptsoft.myshopping.core.adapters.ItemListAdapter;
 import com.zeptsoft.myshopping.core.adapters.SelectableItem;
 import com.zeptsoft.myshopping.core.listmanager.IListManager;
 import com.zeptsoft.myshopping.core.listmanager.ListManager;
+import com.zeptsoft.myshopping.database.firebase.UserDatabaseCommunicatorImpl;
 import com.zeptsoft.myshopping.datatypes.Item;
+import com.zeptsoft.myshopping.datatypes.User;
 import com.zeptsoft.myshopping.notification.NotificationHelper;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -82,6 +85,14 @@ public class ItemListFragment extends Fragment{
 
         //refreshing the adapter for when activity returns
         adapter.notifyDataSetChanged();
+
+        User t = new User();
+        t.setName("User de testes");
+        t.setLastLogin(new Date());
+
+
+        UserDatabaseCommunicatorImpl databaseCommunicator =  new UserDatabaseCommunicatorImpl();
+        databaseCommunicator.createUser(t);
     }
 
     private void initLayout(View v){

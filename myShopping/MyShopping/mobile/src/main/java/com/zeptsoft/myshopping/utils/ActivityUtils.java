@@ -1,5 +1,6 @@
 package com.zeptsoft.myshopping.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class ActivityUtils {
         }
 
         context.startActivity(intent);
+        ((Activity)context).finish();
     }
 
 }
