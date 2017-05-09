@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">My Shopping</string>
+    <string name="action_settings">Settings</string>
+    <string name="item_urgent_hint">Urgente</string>
+    <string name="item_name_hint">Nome do produto</string>
+    <string name="item_category_hint">ex: Frescos</string>
+    <string name="item_category_label">Categoria</string>
+    <string name="item_observations_label">Observações</string>
+    <string name="item_observations_hint">Insira informação extra</string>
+    <string name="item_name_label">Categoria</string>
+    <string name="item_add_button">Ok</string>
+    <string name="login_button">Login</string>
+    <string name="register_button">Registar</string>
+    <string name="register_conf_pwd_hint">Confirmar Password</string>
+    <string name="register_password_hint">Password</string>
+    <string name="register_username_hint">Endereço de Email</string>
+    <string name="login_failed">Falha na autênticação</string>
+    <string name="login_successfull">Bemvindo %1$s</string>
+    <string name="logout">Sair</string>
+    <string name="register_failed">O registo falhou, tente mais tarde...</string>
+</resources>
