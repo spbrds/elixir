@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.zeptsoft.myshopping.activity.ListActivity;
+import com.zeptsoft.myshopping.activity.LoginActivity;
 import com.zeptsoft.myshopping.log.LogUtils;
 
 import java.util.ArrayList;
@@ -30,7 +31,6 @@ public class AuthenticationUtils {
         return new FirebaseAuth.AuthStateListener() {
             private boolean initiated = false;
 
-
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 //already authenticated, no need to do anything else
@@ -53,9 +53,15 @@ public class AuthenticationUtils {
         };
     }
 
+    public static void logout(Context context){
+        FirebaseAuth.getInstance().getInstance().signOut();
+        authenticated = false;
+        ActivityUtils.changeActivity(context, LoginActivity.class, null);
+    }
+
     //todo: put error list validating
     //public static List<String> validateRegister(String email, String password, String confPassword){
-    public static boolean validateRegister(String email, String password, String confPassword){
+    public static boolean validateRegister(String email, String name, String password, String confPassword){
         List<String> errors = new ArrayList<>();
 
         if(StringUtils.isNull(password) || StringUtils.isNull(password) || StringUtils.isNull(confPassword)){
@@ -72,6 +78,15 @@ public class AuthenticationUtils {
 
         //validating passwords
         if(!password.equals(confPassword)){
+            return false;
+        }
+
+        if(password.length()< PASSWORD_MIN_SIZE){
+            return false;
+        }
+
+        //validating name
+        if(StringUtils.isNull(name)){
             return false;
         }
 

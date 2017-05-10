@@ -25,14 +25,16 @@ public class UserDatabaseCommunicatorImpl extends AbstractFirebaseCommunicator i
 
     @Override
     public void createUser(User user) {
-        this.databaseReference.child(rootNode).child(user.getId()).setValue(user);
+        user.setId(this.getNewObjectKey());
+        HashMap<String,Object> childData = new HashMap<>();
+        childData.put(String.format("/%1$s/%2$s",this.getRootIdentifier(),user.getId()),user.toMap());
+        databaseReference.updateChildren(childData);
 
     }
 
     @Override
     public void updateUser(User user) {
         HashMap<String,Object> childData = new HashMap<>();
-        user.setId(getNewObjectKey());
         childData.put(String.format("/%1$s/%2$s",this.getRootIdentifier(),user.getId()),user.toMap());
         databaseReference.updateChildren(childData);
     }

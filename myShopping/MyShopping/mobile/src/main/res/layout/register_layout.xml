@@ -11,6 +11,12 @@
         android:hint="@string/register_username_hint"/>
 
     <EditText
+        android:id="@+id/register_name"
+        android:layout_width="@dimen/input_width"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_name"/>
+
+    <EditText
         android:id="@+id/register_pwd"
         android:layout_width="@dimen/input_width"
         android:layout_height="wrap_content"

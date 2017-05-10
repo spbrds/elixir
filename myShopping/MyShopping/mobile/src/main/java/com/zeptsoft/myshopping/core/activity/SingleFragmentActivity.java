@@ -14,6 +14,7 @@ import com.zeptsoft.myshopping.activity.LoginActivity;
 import com.zeptsoft.myshopping.core.fragments.ItemListFragment;
 import com.zeptsoft.myshopping.log.LogUtils;
 import com.zeptsoft.myshopping.utils.ActivityUtils;
+import com.zeptsoft.myshopping.utils.AuthenticationUtils;
 
 /**
  * Created by SSBook on 26/04/17.
@@ -68,8 +69,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity{
             return true;
         }else
         if(id == R.id.action_logout){
-            FirebaseAuth.getInstance().getInstance().signOut();
-            ActivityUtils.changeActivity(this, LoginActivity.class, null);
+            AuthenticationUtils.logout(this);
         }
 
         return super.onOptionsItemSelected(item);

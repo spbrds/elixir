@@ -17,6 +17,7 @@
     <string name="register_username_hint">Email Address</string>
     <string name="register_password_hint">Password</string>
     <string name="register_conf_pwd_hint">Confirm Password</string>
+    <string name="register_name">Name</string>
     <string name="login_button">Login</string>
     <string name="register_button">Register</string>
 

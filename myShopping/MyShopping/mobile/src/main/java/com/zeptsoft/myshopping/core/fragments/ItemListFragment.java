@@ -86,13 +86,6 @@ public class ItemListFragment extends Fragment{
         //refreshing the adapter for when activity returns
         adapter.notifyDataSetChanged();
 
-        User t = new User();
-        t.setName("User de testes");
-        t.setLastLogin(new Date());
-
-
-        UserDatabaseCommunicatorImpl databaseCommunicator =  new UserDatabaseCommunicatorImpl();
-        databaseCommunicator.createUser(t);
     }
 
     private void initLayout(View v){

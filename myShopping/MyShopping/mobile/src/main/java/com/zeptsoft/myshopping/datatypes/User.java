@@ -17,6 +17,7 @@ public class User implements IMapable {
 
     private String id;
     private String name;
+    private String email;
     private Date lastLogin;
     private List<PendingInvite> pendingInvites;
     private List<Group> groups;
@@ -36,6 +37,14 @@ public class User implements IMapable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Date getLastLogin() {
@@ -68,10 +77,13 @@ public class User implements IMapable {
         HashMap<String,Object> res = new HashMap<>();
         res.put("id", this.id);
         res.put("name", this.name);
+        res.put("email", this.getEmail());
         res.put("lastLogin", this.lastLogin);
         res.put("pendingInvites", this.pendingInvites);
         res.put("groups", this.groups);
 
         return res;
     }
+
+
 }
