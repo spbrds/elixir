@@ -39,11 +39,7 @@ import java.util.List;
 public class ItemListFragment extends Fragment{
 
     private static final String LIST_ID_EXTRA_ID = "com.myshopping.list_id";
-
-    private Animation addRotation;
-    private Animation addReset;
-
-    private boolean addOpened = false;
+    private AddButtonAnimator addButtonAnimator;
 
     private LinearLayout addLayout;
     private ImageButton addButton;
@@ -91,8 +87,9 @@ public class ItemListFragment extends Fragment{
     private void initLayout(View v){
         itemRecyclerView = (RecyclerView)v.findViewById(R.id.productList);
         addLayout = (LinearLayout) v.findViewById(R.id.add_layout);
+        addButton = (ImageButton) v.findViewById(R.id.list_add);
+        addButtonAnimator = new AddButtonAnimator(addLayout, addButton);
 
-        //updateListView();
         registerButtonsListener(v);
     }
 
@@ -132,11 +129,10 @@ public class ItemListFragment extends Fragment{
         });
 
 
-        addButton = (ImageButton) v.findViewById(R.id.list_add);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                animateAddLayout();
+                addButtonAnimator.animateLayout();
 
             }
         });
@@ -182,7 +178,7 @@ public class ItemListFragment extends Fragment{
         itemObservationsEdit.setText(null);
         itemUrgentCheck.setChecked(false);
 
-        animateAddLayout();
+        addButtonAnimator.animateLayout();
     }
 
     private void updateListView(){
@@ -204,72 +200,6 @@ public class ItemListFragment extends Fragment{
 
     }
 
-    public void animateAddLayout(){
-        initAnimations();
-
-        if(addOpened){
-            //subActionView.startAnimation(upAnimation);
-            addButton.startAnimation(addReset);
-            addLayout.setVisibility(View.GONE);
-        }else{
-            //subActionView.startAnimation(downAnimation);
-            addButton.startAnimation(addRotation);
-            addLayout.setVisibility(View.VISIBLE);
-        }
-        addOpened = !addOpened;
-
-    }
-
-    //initing animation and setting listeners
-    public void initAnimations(){
-        if(addRotation == null){
-            addRotation = AnimationUtils.loadAnimation(this.getActivity(), R.anim.add_button_to_close);
-        }
-
-        if(addReset == null){
-            addReset = AnimationUtils.loadAnimation(this.getActivity(), R.anim.add_button_reset);
-        }
-
-        /*if(upAnimation == null){
-            upAnimation = AnimationUtils.loadAnimation(this, R.anim.list_sub_action_animator_up);
-            upAnimation.setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
-
-                }
-
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    subActionView.setVisibility(View.VISIBLE);
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-
-                }
-            });
-        }
-
-        if(downAnimation == null){
-            downAnimation = AnimationUtils.loadAnimation(this, R.anim.list_sub_action_animator_down);
-            upAnimation.setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
-
-                }
-
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    subActionView.setVisibility(View.INVISIBLE);
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-
-                }
-            });
-        }*/
-    }
 
     public static ItemListFragment getInstance(String listId){
         ItemListFragment fragment = new ItemListFragment();

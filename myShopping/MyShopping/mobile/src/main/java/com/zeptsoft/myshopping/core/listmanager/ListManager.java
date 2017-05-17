@@ -15,6 +15,7 @@ public class ListManager implements IListManager, IListSubject{
     protected String listId;
     protected List<SelectableItem> items = new ArrayList<>();
 
+
     public ListManager(String listId){
         this.listId = listId;
     }

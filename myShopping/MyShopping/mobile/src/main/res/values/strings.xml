@@ -26,5 +26,10 @@
     <string name="login_successfull">Welcome %1$s</string>
     <string name="logout">Logout</string>
 
+    <!-- list admin fields -->
+    <string name="list_create_button">Create</string>
+    <string name="list_name_hint" >Home list</string>
+    <string name="list_name_label">Name</string>
+
 
 </resources>

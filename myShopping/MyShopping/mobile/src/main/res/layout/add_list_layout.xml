@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/add_list_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/WhiteSmoke"
+    android:padding="@dimen/content_padding"
+    android:visibility="gone">
+
+    <TextView
+        android:text="@string/list_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/label_component_bottom_margin"/>
+
+    <EditText
+        android:id="@+id/new_list_name"
+        android:hint="@string/list_name_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:imeOptions="actionNext"
+        android:padding="@dimen/label_component_bottom_margin"/>
+
+    <Button
+        android:id="@+id/list_add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/list_create_button"
+        android:layout_gravity="center_horizontal"/>
+
+
+    </LinearLayout>

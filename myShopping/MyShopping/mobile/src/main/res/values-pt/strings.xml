@@ -19,4 +19,7 @@
     <string name="logout">Sair</string>
     <string name="register_failed">O registo falhou, tente mais tarde...</string>
     <string name="register_name">Nome</string>
+    <string name="list_create_button" >Criar</string>
+    <string name="list_name_hint" >Compras do mês</string>
+    <string name="list_name_label">Nome</string>
 </resources>
