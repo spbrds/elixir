@@ -1,4 +1,4 @@
-package com.zeptsoft.myshopping.core.fragments;
+package com.zeptsoft.myshopping.core.ui;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

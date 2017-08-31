@@ -10,7 +10,6 @@ import java.util.Map;
 
 /**
  * Created by SSBook on 15/03/17.
- */
 
 public class ShopList implements IMapable{
     private String id;
@@ -93,3 +92,4 @@ public class ShopList implements IMapable{
         return map;
     }
 }
+ */

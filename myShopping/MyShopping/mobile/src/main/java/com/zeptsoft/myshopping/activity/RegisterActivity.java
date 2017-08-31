@@ -52,14 +52,10 @@ public class RegisterActivity extends AuthenticationActivity {
                         ((TextView) findViewById(R.id.register_error_text)).setText(task.getException().getMessage());
                         LogUtils.d("Error Occurred: %s" + task.getException().getMessage());
                     } else {
-                        User u = new User();
-                        u.setName(name);
-                        u.setEmail(username);
-                        u.setLastLogin(new Date());
-                        u.setGroups(new ArrayList<Group>());
+                        //User u = new User(name : "", email : username,  lastLoginDate : new Date());
 
                         UserDatabaseCommunicatorImpl userDatabaseCom = new UserDatabaseCommunicatorImpl();
-                        userDatabaseCom.createUser(u);
+                        //userDatabaseCom.createUser(u);
                     }
                 }
             });

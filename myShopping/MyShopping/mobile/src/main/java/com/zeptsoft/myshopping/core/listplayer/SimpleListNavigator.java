@@ -68,7 +68,7 @@ public class SimpleListNavigator implements IListNavigator {
         int listSize = items.size();
 
         for (int i = 0; i < listSize; i++){
-            if(!items.get(i).getItem().isChecked()) {
+            if(!items.get(i).getItem().getChecked()) {
                 indexes.add(i);
             }
         }

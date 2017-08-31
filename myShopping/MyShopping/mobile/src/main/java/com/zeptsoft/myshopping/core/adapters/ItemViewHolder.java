@@ -38,7 +38,7 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
         name.setText(i.getName());
         category.setText(i.getCategory());
         observations.setText(i.getObservations());
-        checkedImage.setVisibility(i.isChecked() ? View.VISIBLE : View.INVISIBLE);
+        checkedImage.setVisibility(i.getChecked() ? View.VISIBLE : View.INVISIBLE);
         selectCheckBox.setChecked(si.isSelected());
 
         //binding the checkbox

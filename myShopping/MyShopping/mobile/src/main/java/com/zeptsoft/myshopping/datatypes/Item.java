@@ -2,7 +2,7 @@ package com.zeptsoft.myshopping.datatypes;
 
 /**
  * Created by SSBook on 15/03/17.
- */
+
 
 public class Item {
 
@@ -62,3 +62,4 @@ public class Item {
     }
 
 }
+ */

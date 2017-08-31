@@ -23,7 +23,7 @@
         android:imeOptions="actionNext"
         android:padding="@dimen/label_component_bottom_margin"/>
 
-    <Button
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/list_add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

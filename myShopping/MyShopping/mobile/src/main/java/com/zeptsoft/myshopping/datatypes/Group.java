@@ -1,6 +1,6 @@
 package com.zeptsoft.myshopping.datatypes;
 
-import com.zeptsoft.myshopping.datatypes.interfaces.IMapable;
+import com.zeptsoft.myshopping.datatypes.interfaces.IMapables;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,9 +8,9 @@ import java.util.Map;
 
 /**
  * Created by SSBook on 03/05/17.
- */
 
-public class Group implements IMapable{
+
+public class Group implements IMapables {
     private String id;
     private String name;
     private List<User> users;
@@ -60,3 +60,4 @@ public class Group implements IMapable{
         return map;
     }
 }
+ */

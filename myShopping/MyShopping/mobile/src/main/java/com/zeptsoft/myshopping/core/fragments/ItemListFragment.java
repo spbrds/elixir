@@ -9,8 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -23,14 +21,9 @@ import com.zeptsoft.myshopping.core.adapters.ItemListAdapter;
 import com.zeptsoft.myshopping.core.adapters.SelectableItem;
 import com.zeptsoft.myshopping.core.listmanager.IListManager;
 import com.zeptsoft.myshopping.core.listmanager.ListManager;
-import com.zeptsoft.myshopping.database.firebase.UserDatabaseCommunicatorImpl;
+import com.zeptsoft.myshopping.core.ui.AddButtonAnimator;
 import com.zeptsoft.myshopping.datatypes.Item;
-import com.zeptsoft.myshopping.datatypes.User;
 import com.zeptsoft.myshopping.notification.NotificationHelper;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by SSBook on 10/04/17.
@@ -88,7 +81,7 @@ public class ItemListFragment extends Fragment{
         itemRecyclerView = (RecyclerView)v.findViewById(R.id.productList);
         addLayout = (LinearLayout) v.findViewById(R.id.add_layout);
         addButton = (ImageButton) v.findViewById(R.id.list_add);
-        addButtonAnimator = new AddButtonAnimator(addLayout, addButton);
+        addButtonAnimator = new AddButtonAnimator(this.getContext(),addLayout, addButton);
 
         registerButtonsListener(v);
     }

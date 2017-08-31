@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * Created by SSBook on 03/05/17.
- */
+ *
 
 public class User implements IMapable {
 
@@ -85,5 +85,5 @@ public class User implements IMapable {
         return res;
     }
 
-
 }
+ **/

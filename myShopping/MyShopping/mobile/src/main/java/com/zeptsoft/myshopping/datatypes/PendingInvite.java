@@ -2,7 +2,7 @@ package com.zeptsoft.myshopping.datatypes;
 
 /**
  * Created by SSBook on 03/05/17.
- */
+
 
 public class PendingInvite {
     private String id;
@@ -60,3 +60,4 @@ public class PendingInvite {
         this.groupName = groupName;
     }
 }
+ */

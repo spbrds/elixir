@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zeptsoft.myshopping.R;
+import com.zeptsoft.myshopping.core.ui.AddButtonAnimator;
 
 /**
  * Created by SSBook on 15/05/17.
@@ -35,13 +36,13 @@ public class ListListFragment extends Fragment {
     }
 
     private void initLayout(View view){
-        addButton = (FloatingActionButton) view.findViewById(R.id.list_add);
-        this.animator = new AddButtonAnimator()
+        addButton = (FloatingActionButton) view.findViewById(R.id.list_add_button);
+        this.animator = new AddButtonAnimator(this.getContext(),this.getView(), this.addButton);
 
         view.findViewById(R.id.list_add_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               view.findViewById()
+               animator.animateLayout();
             }
         });
 
