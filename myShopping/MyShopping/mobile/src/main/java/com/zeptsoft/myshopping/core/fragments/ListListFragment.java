@@ -48,7 +48,7 @@ public class ListListFragment extends Fragment {
 
     }
 
-    public ListListFragment getInstance(){
+    public static ListListFragment getInstance(){
         return new ListListFragment();
     }
 }

@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.zeptsoft.myshopping.activity.ListActivity;
+import com.zeptsoft.myshopping.activity.ListsActivity;
 import com.zeptsoft.myshopping.activity.LoginActivity;
 import com.zeptsoft.myshopping.log.LogUtils;
 
@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 public class AuthenticationUtils {
 
-    private static final Class<?> activityAfterLogin = ListActivity.class;
+    private static final Class<?> activityAfterLogin = ListsActivity.class;
     private static FirebaseUser authenticatedUser;
     private static final int PASSWORD_MIN_SIZE = 8;
     private static volatile boolean authenticated = false;

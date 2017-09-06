@@ -69,7 +69,8 @@ public class LoginActivity extends AuthenticationActivity {
 
     }
 
-    public void threatLoginError(){
+    public void treatLoginError(){
+        //TODO: not implemented
 
     }
 
