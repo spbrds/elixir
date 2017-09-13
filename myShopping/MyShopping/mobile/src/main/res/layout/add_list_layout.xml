@@ -3,28 +3,69 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:background="@color/WhiteSmoke"
+    android:layout_gravity="center"
     android:padding="@dimen/content_padding"
-    android:visibility="gone">
+    >
 
-    <TextView
-        android:text="@string/list_name_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/label_component_bottom_margin"/>
-
-    <EditText
-        android:id="@+id/new_list_name"
-        android:hint="@string/list_name_hint"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:imeOptions="actionNext"
-        android:padding="@dimen/label_component_bottom_margin"/>
+        android:orientation="vertical">
+        <TextView
+            android:text="@string/list_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/label_component_bottom_margin"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/list_add_button"
+        <EditText
+            android:id="@+id/new_list_name"
+            android:hint="@string/list_name_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:padding="@dimen/label_component_bottom_margin"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/label_component_bottom_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/list_group_label"
+            />
+
+        <Spinner
+            android:id="@+id/new_list_group_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Spinner>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/label_component_bottom_margin">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/list_private_label"/>
+
+        <CheckBox
+            android:id="@+id/new_list_private"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/list_add_button_ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/list_create_button"

@@ -30,6 +30,8 @@
     <string name="list_create_button">Create</string>
     <string name="list_name_hint" >Home list</string>
     <string name="list_name_label">Name</string>
+    <string name="list_group_label">Group</string>
+    <string name="list_private_label">Private</string>
 
 
 </resources>

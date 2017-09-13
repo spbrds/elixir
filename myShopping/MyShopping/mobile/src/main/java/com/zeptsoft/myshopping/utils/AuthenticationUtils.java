@@ -35,7 +35,6 @@ public class AuthenticationUtils {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 //already authenticated, no need to do anything else
                 //put in place because of AuthStateListener called multiple times after login
-                LogUtils.d("Passei aqui" + counter++);
                 if(authenticated){
                     return;
                 }

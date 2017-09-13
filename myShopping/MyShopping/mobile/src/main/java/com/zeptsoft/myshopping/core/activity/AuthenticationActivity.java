@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.zeptsoft.myshopping.R;
 import com.zeptsoft.myshopping.activity.ListActivity;
+import com.zeptsoft.myshopping.activity.ListsActivity;
 import com.zeptsoft.myshopping.log.LogUtils;
 import com.zeptsoft.myshopping.utils.ActivityUtils;
 import com.zeptsoft.myshopping.utils.AuthenticationUtils;
@@ -34,7 +35,7 @@ public abstract class AuthenticationActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(null != firebaseAuth.getCurrentUser()){
-            ActivityUtils.changeActivity(this, ListActivity.class, null);
+            ActivityUtils.changeActivity(this, ListsActivity.class, null);
         }else {
             firebaseAuth.addAuthStateListener(authListener);
         }

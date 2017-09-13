@@ -7,9 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.zeptsoft.myshopping.R;
 import com.zeptsoft.myshopping.core.ui.AddButtonAnimator;
+import com.zeptsoft.myshopping.log.LogUtils;
 
 /**
  * Created by SSBook on 15/05/17.
@@ -39,10 +41,18 @@ public class ListListFragment extends Fragment {
         addButton = (FloatingActionButton) view.findViewById(R.id.list_add_button);
         this.animator = new AddButtonAnimator(this.getContext(),this.getView(), this.addButton);
 
+        LogUtils.d("passei aqui");
+
         view.findViewById(R.id.list_add_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               animator.animateLayout();
+                LogUtils.d("fui clicado");
+
+                animator.animateLayout();
+
+                Toast.makeText(ListListFragment.this.getContext(),"carregado", Toast.LENGTH_SHORT).show();
+
+
             }
         });
 

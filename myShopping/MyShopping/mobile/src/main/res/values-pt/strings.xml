@@ -22,4 +22,6 @@
     <string name="list_create_button" >Criar</string>
     <string name="list_name_hint" >Compras do mês</string>
     <string name="list_name_label">Nome</string>
+    <string name="list_group_label">Grupo</string>
+    <string name="list_private_label">Privada</string>
 </resources>
