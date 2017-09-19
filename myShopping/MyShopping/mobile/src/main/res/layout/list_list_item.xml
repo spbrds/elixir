@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="164dp"
-    android:layout_height="164dp">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="164dp"
+    android:layout_gravity="center"
+    android:padding="@dimen/list_grid_element_padding"
+    >
 
    <ImageView
        android:layout_width="wrap_content"
@@ -17,11 +20,15 @@
         >
 
         <TextView
+            android:id="@+id/lists_name"
+            android:layout_marginLeft="@dimen/list_element_text_margin"
+            android:layout_marginRight="@dimen/list_element_text_margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Compras Correntes"
-            android:layout_gravity="center"
+            android:layout_gravity="center_vertical"
             />
+
     </FrameLayout>
 
 </FrameLayout>

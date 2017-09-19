@@ -39,6 +39,8 @@
 
     <!--LISTS -->
     <dimen name="list_lateral_padding">16dp</dimen>
+    <dimen name="list_grid_element_padding">5dp</dimen>
+    <dimen name="list_element_text_margin">16dp</dimen>
 
     <!-- groups Icons-->
     <dimen name="group_flag_image">30dp</dimen>

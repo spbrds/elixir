@@ -10,7 +10,7 @@ import kotlin.collections.HashMap
 data class ShopList (var id : String? = "", var name : String? = "",
                      var groupId : String? = "", var personal : Boolean? = false,
                      var createUserId : String? = "", var updatingDate : Date?,
-                     var items : List<Item>){
+                     var items : MutableList<Item>){
 
     fun toMap() : Map<String, Any?>{
         val res = HashMap<String, Any?>();
