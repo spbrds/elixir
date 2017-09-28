@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/add_group_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/WhiteSmoke"
+    android:padding="@dimen/content_padding"
+    android:visibility="gone">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_group_name_hint"/>
+
+    <include layout="@layout/generic_add_item_to_list"/>
+
+</LinearLayout>

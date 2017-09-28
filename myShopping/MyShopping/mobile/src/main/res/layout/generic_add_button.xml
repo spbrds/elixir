@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.FloatingActionButton xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_add_button"
+    android:layout_width="@dimen/fabSize"
+    android:layout_height="@dimen/fabSize"
+    android:layout_gravity="bottom|right"
+    android:src="@drawable/ic_add_white_24dp"
+    android:layout_margin="@dimen/fab_margin"/>

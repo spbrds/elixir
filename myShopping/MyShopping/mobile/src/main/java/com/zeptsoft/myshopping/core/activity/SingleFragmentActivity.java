@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.zeptsoft.myshopping.R;
+import com.zeptsoft.myshopping.activity.GroupListActivity;
 import com.zeptsoft.myshopping.activity.LoginActivity;
 import com.zeptsoft.myshopping.core.fragments.ItemListFragment;
 import com.zeptsoft.myshopping.log.LogUtils;
@@ -67,8 +68,9 @@ public abstract class SingleFragmentActivity extends AppCompatActivity{
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        }else
-        if(id == R.id.action_logout){
+        }else if(id == R.id.action_manage_groups){
+            ActivityUtils.changeActivity(this, GroupListActivity.class, false);
+        }else if(id == R.id.action_logout){
             AuthenticationUtils.logout(this);
         }
 

@@ -27,7 +27,11 @@
         <activity android:name=".activity.RegisterActivity"/>
 
         <activity android:name=".activity.ListsActivity"
-            android:label="Lists"
+            android:label="@string/lists_activity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".activity.GroupListActivity"
+            android:label="@string/groups_activity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <!-- RECEIVERS -->

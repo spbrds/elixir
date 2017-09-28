@@ -12,13 +12,14 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Spinner
-import android.widget.Toast
 import com.zeptsoft.myshopping.R
 import com.zeptsoft.myshopping.core.adapters.ListsAdapter
 import com.zeptsoft.myshopping.core.ui.AddButtonAnimator
-import com.zeptsoft.myshopping.datatypes.Item
+import com.zeptsoft.myshopping.database.firebase.ListAdminDatabaseCommunicatorImpl
+import com.zeptsoft.myshopping.database.interfaces.IListAdminDatabaseCommunicator
 import com.zeptsoft.myshopping.datatypes.ShopList
 import com.zeptsoft.myshopping.log.LogUtils
+import com.zeptsoft.myshopping.utils.AuthenticationUtils
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -29,7 +30,10 @@ import kotlin.collections.ArrayList
 class ListsFragment : Fragment(){
 
     private lateinit var recyclerView : RecyclerView;
+    private lateinit var listAdapter : ListsAdapter;
     private val listList : MutableList<ShopList> = ArrayList<ShopList>();
+    private lateinit var animator : AddButtonAnimator;
+    private val listDatabaseCommunicator : IListAdminDatabaseCommunicator = ListAdminDatabaseCommunicatorImpl();
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -41,7 +45,7 @@ class ListsFragment : Fragment(){
     private fun initLayout(view:View){
         val addButton : FloatingActionButton = view.findViewById(R.id.list_add_button);
         val addLayout : View = view.findViewById(R.id.add_list_layout);
-        val animator  =  AddButtonAnimator(this.context, addLayout, addButton);
+        this.animator  =  AddButtonAnimator(this.context, addLayout, addButton);
 
         //new list button to unhide the add layout
         addButton.setOnClickListener(View.OnClickListener {
@@ -49,11 +53,16 @@ class ListsFragment : Fragment(){
         });
 
         //add button to create a new list
-        view.findViewById<View>(R.id.list_add_button_ok).setOnClickListener(View.OnClickListener {
+        view.findViewById<View>(R.id.list_add_button).setOnClickListener(View.OnClickListener {
             val shopList = getListFromForm(view);
+            this.listList.add(shopList);
             LogUtils.d(shopList.toString());
+            //writing shopList to the cloud
+            writeShopList(shopList);
 
-
+            //adapting the layout to the change
+            this.listAdapter.notifyDataSetChanged();
+            this.animator.animateLayout();
         });
     }
 
@@ -64,24 +73,27 @@ class ListsFragment : Fragment(){
         putDummyDataOnIt();
 
         recyclerView = view!!.findViewById(R.id.lists_list)
-        val listAdapter = ListsAdapter(this.context,this.listList);
+        this.listAdapter = ListsAdapter(this.context,this.listList);
         recyclerView.setLayoutManager(GridLayoutManager(this.context,2,LinearLayoutManager.VERTICAL,false));
         recyclerView.setAdapter(listAdapter);
 
 
     }
 
-    companion object {
-        fun getInstance(): ListsFragment = ListsFragment();
-    }
-
-
     private fun getListFromForm(view : View) : ShopList{
         val name = view.findViewById<EditText>(R.id.new_list_name).text.toString();
         val private = view.findViewById<CheckBox>(R.id.new_list_private).isChecked;
         val group = ""+view.findViewById<Spinner>(R.id.new_list_group_spinner).selectedItemPosition;
 
-        return ShopList(name = name, groupId = group, personal = private, items = ArrayList(), updatingDate = Date());
+        return ShopList(name = name, groupId = group, personal = private, items = ArrayList(), updatingDate = Date(), createUserId = AuthenticationUtils.getAuthenticatedUser()?.uid);
+    }
+
+    private fun writeShopList(shopList : ShopList){
+        listDatabaseCommunicator.create(shopList);
+    }
+
+    private fun loadLists(){
+        //listDatabaseCommunicator.
     }
 
     private fun putDummyDataOnIt() {
@@ -95,6 +107,10 @@ class ListsFragment : Fragment(){
         listList.add(ShopList("test8","Dummy 8", "GRUPO", false, "user",Date(), ArrayList()))
         listList.add(ShopList("test9","Dummy 9", "GRUPO", false, "user",Date(), ArrayList()))
         listList.add(ShopList("test10","Dummy 10", "GRUPO", false, "user",Date(), ArrayList()))
+    }
+
+    companion object {
+        fun getInstance(): ListsFragment = ListsFragment();
     }
 
 }

@@ -9,7 +9,8 @@ import kotlin.collections.HashMap
 
 data class User (var id : String? = "", val name : String = "",
                  val email : String = "", val lastLogin : Date?,
-                 val pendingInvites : List<String>?, val groups : List<String>? ){
+                 val pendingInvites : List<String>?, val groups : List<String>?,
+                 val privateLists : List<ShopList>){
 
 
     fun toMap() : Map<String, Any?>{

@@ -33,5 +33,13 @@
     <string name="list_group_label">Group</string>
     <string name="list_private_label">Private</string>
 
+    <!-- list group fields -->
+    <string name="add_group_name_hint">Group Name</string>
+
+
+    <!-- activities name -->
+    <string name="groups_activity">Groups</string>
+    <string name="lists_activity">Lists</string>
+
 
 </resources>

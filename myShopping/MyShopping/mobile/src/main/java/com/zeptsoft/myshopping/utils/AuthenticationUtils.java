@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
 
 public class AuthenticationUtils {
 
+    private static final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private static final Class<?> activityAfterLogin = ListsActivity.class;
     private static FirebaseUser authenticatedUser;
     private static final int PASSWORD_MIN_SIZE = 8;
@@ -92,5 +93,18 @@ public class AuthenticationUtils {
         return true;
     }
 
+    private static synchronized void setLoginInfo(){
+        if(null != firebaseAuth.getCurrentUser()) {
+            authenticatedUser = firebaseAuth.getCurrentUser();
+            authenticated = true;
+        }
+    }
+
+    public static FirebaseUser getAuthenticatedUser(){
+        if(null != authenticatedUser){
+            setLoginInfo();
+        }
+        return authenticatedUser;
+    }
 
 }

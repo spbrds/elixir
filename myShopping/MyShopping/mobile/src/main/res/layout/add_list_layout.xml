@@ -66,12 +66,7 @@
             />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/list_add_button_ok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/list_create_button"
-        android:layout_gravity="center_horizontal"/>
+    <include layout="@layout/generic_add_item_to_list"/>
 
 
     </LinearLayout>

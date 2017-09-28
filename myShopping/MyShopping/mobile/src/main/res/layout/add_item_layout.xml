@@ -84,11 +84,6 @@
         android:imeOptions="actionDone"
         android:padding="@dimen/label_top_margin"/>
 
-    <Button
-        android:id="@+id/item_add_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/item_add_button"
-        android:layout_gravity="center_horizontal"/>
+    <include layout="@layout/generic_add_item_to_list"/>
 
 </LinearLayout>

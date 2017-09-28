@@ -26,7 +26,6 @@ public abstract class AuthenticationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         firebaseAuth = FirebaseAuth.getInstance();
         authListener = AuthenticationUtils.getAuthStateListenerForLogin(this, getErrorMessageId());
     }
@@ -34,7 +33,7 @@ public abstract class AuthenticationActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(null != firebaseAuth.getCurrentUser()){
+        if(null != AuthenticationUtils.getAuthenticatedUser()){
             ActivityUtils.changeActivity(this, ListsActivity.class, null);
         }else {
             firebaseAuth.addAuthStateListener(authListener);

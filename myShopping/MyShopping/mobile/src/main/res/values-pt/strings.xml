@@ -24,4 +24,5 @@
     <string name="list_name_label">Nome</string>
     <string name="list_group_label">Grupo</string>
     <string name="list_private_label">Privada</string>
+    <string name="add_group_name_hint">Nome do Grupo</string>
 </resources>
