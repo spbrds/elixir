@@ -33,7 +33,7 @@ class GroupListFragment : Fragment(){
         //init add button
         val addButton : FloatingActionButton = view.findViewById(R.id.list_add_button);
         val addLayout :View =  view.findViewById(R.id.add_group_layout);
-        this.animator = AddButtonAnimator(this.context,view,addLayout);
+        this.animator = AddButtonAnimator(this.context,addLayout,addButton);
 
         addButton.setOnClickListener(View.OnClickListener {
             animator.animateLayout();
