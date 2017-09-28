@@ -32,7 +32,7 @@ public class LoginActivity extends AuthenticationActivity {
         findViewById(R.id.login_register_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.changeActivity(LoginActivity.this, RegisterActivity.class, null);
+                ActivityUtils.changeActivity(LoginActivity.this, RegisterActivity.class, null, false);
             }
         });
 

@@ -42,7 +42,7 @@ public class AuthenticationUtils {
                 authenticatedUser = firebaseAuth.getCurrentUser();
                 if(authenticatedUser != null){
                     authenticated = true;
-                    ActivityUtils.changeActivity(context, activityAfterLogin,null);
+                    ActivityUtils.changeActivity(context, activityAfterLogin,null, false);
                 }else{
                     if(initiated) {
                         Toast.makeText(context, context.getResources().getString(failureMessageId), Toast.LENGTH_SHORT).show();
@@ -56,7 +56,7 @@ public class AuthenticationUtils {
     public static void logout(Context context){
         FirebaseAuth.getInstance().getInstance().signOut();
         authenticated = false;
-        ActivityUtils.changeActivity(context, LoginActivity.class, null);
+        ActivityUtils.changeActivity(context, LoginActivity.class, null, false);
     }
 
     //todo: put error list validating

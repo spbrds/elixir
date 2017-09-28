@@ -34,7 +34,7 @@ public abstract class AuthenticationActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(null != AuthenticationUtils.getAuthenticatedUser()){
-            ActivityUtils.changeActivity(this, ListsActivity.class, null);
+            ActivityUtils.changeActivity(this, ListsActivity.class, null, false);
         }else {
             firebaseAuth.addAuthStateListener(authListener);
         }
