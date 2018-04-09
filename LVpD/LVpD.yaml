@@ -1,0 +1,274 @@
+swagger: '2.0'
+info:
+  description: >-
+    Documentação da API de Back end do LVpD para o portal e App Mobile
+  version: 1.0.0
+  title: LVpD
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: lvpd.pt
+basePath: /v2
+tags:
+  - name: user
+    description: services about users
+  - name: Devices
+    description: services about devices
+  - name: Authentication
+    description: services about authentications using OAUTH
+    externalDocs:
+      description: Find out more about our store
+      url: 'http://swagger.io'
+schemes:
+  - http
+paths:
+  /authentication/login:
+    post:
+      tags:
+        - Authentication
+      summary: Allows authentication into the LVpD application/portal
+      operationId: login
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+          - in: body
+            name: body
+            description: Request object that passes all the information to login
+            required: true
+            schema:
+              $ref: '#/definitions/AuthenticationRequest'
+      responses:
+        '200':
+          description: login successful
+          schema:
+            $ref: '#/definitions/User'
+        '400':
+          description: Login Failed
+        '501':
+          description: Technical Error
+  /authentication/logout:
+    post:
+      tags:
+        - Authentication
+      summary: logout
+      description: Ends the user session and invalidates existing tokens
+      operationId: logout
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: User (pode ser revisto)
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: 'OK'
+  /users/{userId}:
+    get:
+      tags:
+        - users
+      summary: gets the user detail
+      operationId: getUserByUserId
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: path
+          description: 'User id to return the detail'
+          required: true
+          type: string
+      responses:
+        '200':
+          description: user detail
+          schema:
+            $ref: '#/definitions/User'
+        '404':
+          description: User not found
+        '501':
+          description: Technical Error
+    put:
+      tags:
+        - user
+      summary: updates
+      consumes:
+        - application/json
+      parameters:
+      - name: userId
+        in: path
+        description: 'User id to return the detail'
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Updated user object
+        required: true
+        schema:
+          $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'User not found'
+        '501':
+          description: Technical Error
+  /devices:
+    get:
+      tags:
+        - Devices
+      summary: Returns a paginated list of all devices
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: pagination object
+          required: true
+          schema:
+            $ref: '#/definitions/Pagination'
+      responses:
+        '200':
+          description: list of the requested Devices
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DeviceItem'
+        '501':
+          description: Technical Error
+  /devices/{deviceId}:
+    tags:
+      - Devices
+    summary: returns a device detail
+    produces:
+      - application/json
+
+
+securityDefinitions:
+  lvpd_auth:
+    type: oauth2
+    authorizationUrl: 'http://lvpd.pt/oauth/dialog'
+    flow: implicit
+    scopes:
+      'write:lvpd': access to your account (ainda não sei para que é isto)
+      'read:lvpd': read your pets
+
+definitions:
+  AuthenticationRequest:
+    type: object
+    properties:
+      authProvider:
+        type: string
+        description: provider to use to the login, oAuth system or native
+        enum:
+          - Facebook
+          - Google
+          - LVpDNative
+      username:
+        type: string
+        description: username passed to authenticate the users
+      password:
+        type: string
+        description: user password hashed in SHA-512(ou outra algoritmo)
+    xml:
+      name: AuthenticationRequest
+  User:
+    type: object
+    properties:
+      uid:
+        type: string
+        description: user unique identifier
+      username:
+        type: string
+        description: username that access the system
+      name:
+        type: string
+        description: actual name of the person
+      email:
+        type: string
+        description: user email address
+      roles:
+        type: array
+        xml:
+          name: role
+          wrapped: true
+        items:
+          $ref: '#/definitions/Role'
+  Role:
+    type: object
+    properties:
+      code:
+        type: string
+        description: role identifier code
+      description:
+        type: string
+        description: role description
+  Pagination:
+    type: object
+    properties:
+      pageNumber:
+        type: integer
+        format: int64
+        description: Number of the page required (1,2,3...)
+      pageLength:
+        type: integer
+        format: int64
+        description: Number of items per page. 0 for all
+  DeviceItem:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Device ID
+      name:
+        type: string
+        description: Device name
+      type:
+        type: string
+        description: Device Type
+      status:
+        type: string
+        enum:
+          - on
+          - off
+  DeviceDetail:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Device ID
+      Name:
+        type: string
+        description: Device name
+      Type:
+        type: string
+        description: Device Type
+      status:
+        type: string
+        enum:
+          - on
+          - off
+      gpsCoordinates:
+        $ref: '#/definitions/GPSCoordinate'
+      activationDate:
+        type: string
+        description: Date on format YYYY/MM/DD
+        format: date-time
+      lastMessage:
+        type: string
+        description: Isto se calhar nem é útil, mas pode servir de curiosidade
+  GPSCoordinate:
+    type: object
+    description: GPS coordinates for a resource
+    properties:
+      latitude:
+        type: string
+      longitude:
+        type: string
+#externalDocs: www.sapo.pt
