@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">3RSU</string>
+    <string name="login_wait_message">A autenticar...</string>
+    <string name="please_wait">Por favor aguarde</string>
+</resources>
